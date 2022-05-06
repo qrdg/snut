@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h4 th:text="${cnt}+개의+' '+글"></h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>커뮤이름</th>
+                    <th>글번호</th>
+                    <th>parentNo</th>
+                    <th>내용</th>
+                    <th>닉네임</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="List : ${commentList}">
+                    <td th:text="${List.communityName.title}"></td>
+                    <td th:text="${List.cno}"></td>
+                    <td th:text="${List.parentNo}"></td>
+                    <td th:text="${List.text}"></td>
+                    <td th:text="${List.writer.nickName}"></td>
+                    <td><a th:href="@{/comment/delete(id=${List.cno})}">삭제</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <th:block th:each = "page : ${#numbers.sequence(startPage,endPage)}">
+            <a th:if="${page != nowPage}" th:href="@{/comment(page = ${page - 1},no=${param.no})}" th:text="${page}"></a>
+            <strong th:if="${page == nowPage}" th:text="${page}" style="color : red" ></strong>
+        </th:block>
+    </div>
+    <div>
+        <form action="/comment" method="post">
+            <input type="text" name="communityName" th:value="${param.no}">
+            <input type="text" name="parentNo" placeholder="대댓글 적을 글번호">
+            <input type="text" name="text" placeholder="내용">
+            <input type="text" name="writer" placeholder="작성자">
+            <button type="submit">작성</button>
+        </form>
+    </div>
+</body>
+</html>

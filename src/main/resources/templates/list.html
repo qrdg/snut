@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr th:each="cuList: ${cuList}">
+                <!-- <td>
+                    image
+                </td> -->
+                <td>
+                    <a th:text="${cuList.curationTitle}"></a>
+                </td>
+                <td>
+                    <a th:href="@{/list/modify(id=${cuList.curationNo})}">수정(미구현)</a>
+                </td>
+                <td>
+                    <a th:href="@{/list/delete(id=${cuList.curationNo})}">삭제</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <form action="/list" method="post">
+            <input type="text" name="email" placeholder="writerEmail">
+            <input type="text" name="curationTitle" placeholder="curationTitle">
+            <input type="text" name="curationText" placeholder="curationText">
+            <button type="submit">작성</button>
+        </form>
+    </div>
+</body>
+</html>

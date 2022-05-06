@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form th:action="@{/communityList}" method="get">
+            <input type="text" name="searchTitle">
+            <button type="submit">검색</button>
+        </form>
+    </div>
+    <table border="1">
+        <thead>
+            <th>no</th>
+            <th>커뮤이름</th>
+            <th>댓글갯수</th>
+        </thead>
+        <tbody>
+            <tr th:each="cList: ${cList}">
+                <td th:text="${cList.no}"></td>
+                <td>
+                    <a th:text="${cList.title}" th:href="@{/comment(no=${cList.no})}"></a>
+                </td>
+                <td th:text="[+${cList.replyCount}+]"></td>
+                <td>
+                    <a th:href="@{/communityList/delete(id=${cList.no})}">삭제</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <form action="/communityList" method="post">
+            <input type="text" name="title" placeholder="커뮤이름">
+            <input type="text" name="creater" placeholder="아이디">
+            <button type="submit">등록</button>
+        </form>
+    </div>
+</body>
+</html>
