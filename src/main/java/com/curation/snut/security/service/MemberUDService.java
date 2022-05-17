@@ -27,7 +27,6 @@ public class MemberUDService implements UserDetailsService {
         log.info("ClubUserDetailsService loadUserByUsername " + username);
 
         Optional<Member> result = memberRepository.findByEmail(username);
-        log.info("MemberUDService result >>> " + result.get());
 
         if (!result.isPresent()) {
             throw new UsernameNotFoundException("check Email");
@@ -43,7 +42,6 @@ public class MemberUDService implements UserDetailsService {
                 member.getRoleSet().stream().map(role -> new SimpleGrantedAuthority("ROLE_" +
                         role.name()))
                         .collect(Collectors.toSet()));
-        log.info("authMemberDTO >>>>>" + authMemberDTO);
 
         authMemberDTO.setEmail(member.getEmail());
         return authMemberDTO;

@@ -2,7 +2,6 @@ package com.curation.snut.repository;
 
 import com.curation.snut.entity.Member;
 import com.curation.snut.entity.community.Community;
-import com.curation.snut.repository.community.CommentRepository;
 import com.curation.snut.repository.community.CommunityRepository;
 
 import org.junit.jupiter.api.Test;
@@ -14,16 +13,6 @@ public class CommunitiyRepositoryTest {
 
     @Autowired
     CommunityRepository communitiyRepository;
-    @Autowired
-    private CommentRepository commentRepository;
-
-    @Test
-    void deleteCommentTest() {
-        Long CommentLists = commentRepository.searchComment(1L);
-        System.out.println(CommentLists);
-        commentRepository.deleteById(1L);
-        commentRepository.deleteReply(1L);
-    }
 
     @Test
     public void insertCommunity() {

@@ -44,7 +44,6 @@ public class CommuJoinTempServiceImpl implements CommuJoinTempService {
 
                         CommuJoinTemp commuJoinTemp = CommuJoinTemp.builder()
                                         .tMember(member)
-                                        .applyMessage(commuJoinDTO.getApplyMessage())
                                         .tCommunity(community).build();
                         commuJoinTempRepository.save(commuJoinTemp);
                         return "신청 완료";

@@ -13,18 +13,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberDTO {
-    private String email;
+  private String email;
 
-    private String name;
-    private String pw;
-    private String mobile;
-    private String birth;
-    private LocalDateTime modDate;
-    private LocalDateTime regDate;
-    private String nickname;
-    private String gender;
-    private boolean fromSocial;
+  private String name;
+  private String pw;
+  private String mobile;
+  private String birth;
+  private LocalDateTime modDate;
+  private LocalDateTime regDate;
+  private String nickname;
+  private String gender;
 
-    private Collection<String> roleSet;
+  private Collection<String> roleSet;
 
 }

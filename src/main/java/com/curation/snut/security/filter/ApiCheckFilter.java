@@ -13,11 +13,10 @@ import com.curation.snut.security.util.JWTUtil;
 
 import lombok.extern.log4j.Log4j2;
 import org.json.simple.JSONObject;
+
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class ApiCheckFilter extends OncePerRequestFilter {
@@ -41,7 +40,6 @@ public class ApiCheckFilter extends OncePerRequestFilter {
             log.info("ApiCheckFilter..................................");
             log.info("ApiCheckFilter..................................");
             boolean checkHeader = checkAuthHeader(request);
-            log.info("header >>>>  " + checkAuthHeader(request));
 
             if (checkHeader) {
                 filterChain.doFilter(request, response);
@@ -66,7 +64,6 @@ public class ApiCheckFilter extends OncePerRequestFilter {
         boolean checkResult = false;
         String authHeader = request.getHeader("token");
 
-        log.info("authHeader >>> " + request.getHeader("token"));
         if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer ")) {
             try {
                 Map email = jwtUtil.validateAndExtract(authHeader.substring(7));

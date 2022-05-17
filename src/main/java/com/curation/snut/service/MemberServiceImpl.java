@@ -6,6 +6,7 @@ import com.curation.snut.repository.MemberRepository;
 import com.curation.snut.security.role.MemberRole;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

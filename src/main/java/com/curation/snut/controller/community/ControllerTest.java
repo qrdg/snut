@@ -52,14 +52,12 @@ public class ControllerTest {
     @GetMapping(value = "/test/commuList", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CommunityDTO>> testList(String searchTitle) {
         if (searchTitle != null) {
-//            List<CommunityDTO> searchCommunityList = communityService.searchTitle(searchTitle);
-//            return new ResponseEntity<>(searchCommunityList, HttpStatus.OK);
+            List<CommunityDTO> searchCommunityList = communityService.searchTitle(searchTitle);
+            return new ResponseEntity<>(searchCommunityList, HttpStatus.OK);
         } else {
-//            List<CommunityDTO> list = communityService.communityListWithCnt();
-//            return new ResponseEntity<>(list, HttpStatus.OK);
-            return null;
+            List<CommunityDTO> list = communityService.communityListWithCnt();
+            return new ResponseEntity<>(list, HttpStatus.OK);
         }
-        return null;
     }
 
     @PostMapping(value = "/test/commuList", produces = MediaType.APPLICATION_JSON_VALUE)

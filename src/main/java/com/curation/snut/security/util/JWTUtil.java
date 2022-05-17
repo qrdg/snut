@@ -2,7 +2,6 @@ package com.curation.snut.security.util;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import com.curation.snut.security.dto.AuthMemberDTO;
@@ -31,28 +30,7 @@ public class JWTUtil {
                     .parseClaimsJws(tokenStr);
             DefaultClaims claims = (DefaultClaims) defaultJws.getBody();
             // contentValue = claims.getSubject();
-            System.out.println("claims >>>>> " + claims);
-            Map subMap = new HashMap<>();
-            subMap.put("sub", claims.get("sub"));
-            contentValue = subMap;
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error(e.getMessage());
-            contentValue = null;
-        }
-        log.info("contentValue >>>>>>>>>>>> " + contentValue);
-        return contentValue;
-    }
-
-    public Object getClaims(String tokenStr) throws Exception {
-        Object contentValue = null;
-        try {
-            DefaultJws defaultJws = (DefaultJws) Jwts.parser().setSigningKey(secretKey.getBytes("UTF-8"))
-                    .parseClaimsJws(tokenStr);
-            DefaultClaims claims = (DefaultClaims) defaultJws.getBody();
-            System.out.println("claims >>>>> " + claims);
-            contentValue = claims.get("sub");
-            log.info("contentValue >>>>>>>>> " + contentValue);
+            contentValue = (Map) claims.get("sub");
         } catch (Exception e) {
             e.printStackTrace();
             log.error(e.getMessage());

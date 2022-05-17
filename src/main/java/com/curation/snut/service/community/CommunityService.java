@@ -2,8 +2,6 @@ package com.curation.snut.service.community;
 
 import java.util.List;
 
-import com.curation.snut.dto.PageRequestDTO;
-import com.curation.snut.dto.PageResultDTO;
 import com.curation.snut.dto.community.CommunityDTO;
 import com.curation.snut.entity.Member;
 import com.curation.snut.entity.community.Community;
@@ -12,17 +10,13 @@ public interface CommunityService {
 
     void delete(Long id);
 
-    public CommunityDTO getCommunityData(Long no);
-
-    public void modifyCommunityContent(Long no, String content);
-
     public List<CommunityDTO> findMyCommu(String email);
 
     public List<CommunityDTO> CommunityList();
 
-    public PageResultDTO communityListWithCnt(PageRequestDTO pageRequestDTO);
+    public List<CommunityDTO> communityListWithCnt();
 
-    public PageResultDTO searchTitle(PageRequestDTO pageRequestDTO, String searchTitle);
+    public List<CommunityDTO> searchTitle(String searchTitle);
 
     void write(CommunityDTO communityDTO);
 
@@ -34,7 +28,6 @@ public interface CommunityService {
         Community community = Community.builder()
                 .no(dto.getNo())
                 .title(dto.getTitle())
-                .text(dto.getText())
                 .thumbnail(dto.getThumbnail())
                 .creater(member)
                 .build();
@@ -47,7 +40,6 @@ public interface CommunityService {
                 .no(community.getNo())
                 .title(community.getTitle())
                 .thumbnail(community.getThumbnail())
-                .text(community.getText())
                 .creater(community.getCreater())
                 .regDate(community.getRegDate())
                 .modDate(community.getModDate())
@@ -61,7 +53,6 @@ public interface CommunityService {
                 .no(community.getNo())
                 .title(community.getTitle())
                 .thumbnail(community.getThumbnail())
-                .text(community.getText())
                 .creater(community.getCreater())
                 .replyCount(replyCount.intValue())
                 .regDate(community.getRegDate())

@@ -26,11 +26,11 @@ public class CommunityTest {
     @GetMapping("/communityList")
     public String CList(Model model, String searchTitle) {
         if (searchTitle != null) {
-//            List<CommunityDTO> searchCommunityList = communityService.searchTitle(searchTitle);
-//            model.addAttribute("cList", searchCommunityList);
+            List<CommunityDTO> searchCommunityList = communityService.searchTitle(searchTitle);
+            model.addAttribute("cList", searchCommunityList);
         } else {
-//            List<CommunityDTO> list = communityService.communityListWithCnt();
-//            model.addAttribute("cList", list);
+            List<CommunityDTO> list = communityService.communityListWithCnt();
+            model.addAttribute("cList", list);
         }
         return "communityList.html";
     }
@@ -47,6 +47,11 @@ public class CommunityTest {
         commentService.deleteAllCommunutyComment(id);
         communityService.delete(id);
         return "redirect:/communityList";
+    }
+
+    @GetMapping("")
+    public String adssf() {
+        return "index.html";
     }
 
 }

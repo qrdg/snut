@@ -19,7 +19,6 @@ public class CommunityDTO {
     private Long no;
     private String title;
     private String thumbnail;
-    private String text;
     private Member creater;
 
     private int replyCount;

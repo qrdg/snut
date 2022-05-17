@@ -25,5 +25,4 @@ public class CommentAlert {
     private String nickName;
     private String commuName;
     private String text;
-    private Long cmo;
 }
